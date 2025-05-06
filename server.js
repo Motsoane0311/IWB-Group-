@@ -8,7 +8,7 @@ const morgan = require('morgan');
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
 const salesRoutes = require('./routes/salesRoutes');
-const queryRoutes = require('./routes/queryRoutes'); // ✅ NEW
+const queryRoutes = require('./routes/queryRoutes');
 const incomeRoutes = require('./routes/incomeRoutes');
 
 dotenv.config();
@@ -16,15 +16,15 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
-app.use(morgan('dev'));
-app.use(express.json());
+app.use(cors()); // Enable CORS for all routes
+app.use(morgan('dev')); // Log requests to console
+app.use(express.json()); // Parse JSON requests
 
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/sales', salesRoutes);
-app.use('/api/queries', queryRoutes); // ✅ NEW
+app.use('/api/queries', queryRoutes);
 app.use('/api/income', incomeRoutes);
 
 // MongoDB connection
@@ -41,6 +41,7 @@ const connectDB = async () => {
   }
 };
 
+// Start server
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
