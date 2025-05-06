@@ -16,9 +16,15 @@ dotenv.config();
 const app = express();
 
 // Middleware
+<<<<<<< HEAD
 app.use(cors()); // Enable CORS for all routes
 app.use(morgan('dev')); // Log requests to console
 app.use(express.json()); // Parse JSON requests
+=======
+app.use(cors()); // Enable CORS for all origins
+app.use(morgan('dev')); // Log incoming requests
+app.use(express.json()); // Parse JSON request bodies
+>>>>>>> 547fe079007d970b800e25bbae805d8b9b3a270a
 
 // Routes
 app.use('/api/auth', authRoutes);
